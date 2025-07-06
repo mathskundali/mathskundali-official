@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MathsKundali - Home</title>
+<style>
+  /* Basic styles for the page */
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 150px 20px 50px 20px;
+  }
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: black;
+    color: gold;
+    padding: 20px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    user-select: none;
+    z-index: 999;
+  }
+  nav {
+    position: fixed;
+    top: 70px;
+    width: 100%;
+    background: #111;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    z-index: 998;
+  }
+  nav a {
+    color: gold;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+  nav a:hover,
+  nav a.active {
+    background: gold;
+    color: black;
+  }
+  h1 {
+    margin-bottom: 20px;
+    color: gold;
+  }
+  p {
+    color: #ccc;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  button.btn {
+    background: gold;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.3s ease;
+  }
+  button.btn:hover {
+    background: #ffdd00;
+  }
+  #math-facts {
+    margin-top: 40px;
+    background: #111;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 0 10px #8c7600cc;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #factText {
+    font-size: 1.1rem;
+  }
+  /* Splash Screen */
+  #splash {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, #ffe600, #8c7600);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    flex-direction: column;
+    color: black;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    user-select: none;
+    animation: splashFadeOut 1s ease forwards;
+    animation-delay: 3s;
+  }
+  #splash h1 {
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0 #8c7600;
+  }
+  @keyframes splashFadeOut {
+    to { opacity: 0; visibility: hidden; }
+  }
+</style>
+</head>
+<body>
+<div id="splash">
+  <h1>MathsKundali</h1>
+  <p>Unlock Your Future with Math Magic!</p>
+</div>
+<header>MathsKundali</header>
+<nav>
+  <a href="index.html" class="active">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="explanation.html">Explanation</a>
+  <a href="magic.html">Magic Tricks</a>
+</nav>
+
+<main>
+  <section>
+    <h1>Welcome to MathsKundali</h1>
+    <p>Discover amazing math magic tricks that reveal secrets like your date of birth, height, ATM PIN, and even your phone number.</p>
+    <button class="btn" onclick="location.href='magic.html'">Start the Magic</button>
+  </section>
+  <section id="math-facts">
+    <h3>Interesting Math Facts</h3>
+    <div id="factText" class="fact">Loading facts...</div>
+  </section>
+</main>
+
+<script>
+  // Splash fade out
+  window.addEventListener('load', () => {
+    const splash = document.getElementById('splash');
+    setTimeout(() => {
+      splash.style.opacity = 0;
+      setTimeout(() => splash.style.display = 'none', 1000);
+    }, 3000);
+  });
+
+  // Math facts rotation
+  const facts = [
+    "A 'jiffy' is an actual unit of time: 1/100th of a second.",
+    "Zero is the only number that can't be represented in Roman numerals.",
+    "The Fibonacci sequence appears in nature, like the arrangement of leaves on a stem.",
+    "Pi has been calculated to over 31 trillion digits!",
+    "A 'googol' is 10^100, much larger than the number of atoms in the observable universe.",
+    "There are infinitely many prime numbers."
+  ];
+
+  function showFact() {
+    const factElem = document.getElementById('factText');
+    let idx = Math.floor(Math.random() * facts.length);
+    factElem.textContent = facts[idx];
+  }
+  setInterval(showFact, 8000);
+  window.onload = showFact;
+</script>
+</body>
+</html>
